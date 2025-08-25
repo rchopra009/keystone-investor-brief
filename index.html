@@ -68,70 +68,6 @@
             font-size: 1.25rem;
             z-index: 10;
         }
-
-        /* Redesigned Flywheel Styles */
-        .flywheel-grid-container {
-            position: relative;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .flywheel-core-redesigned {
-            background: linear-gradient(135deg, var(--keystone-green) 0%, var(--keystone-purple) 100%);
-            color: white;
-            border-radius: 9999px; /* full rounded */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            padding: 2.5rem;
-            width: 200px;
-            height: 200px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 10;
-        }
-        
-        .flywheel-node-redesigned {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            z-index: 5;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .flywheel-node-redesigned:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .flywheel-line {
-            stroke: var(--keystone-green);
-            stroke-width: 2;
-            stroke-dasharray: 8;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .flywheel-node-redesigned:hover ~ .flywheel-svg .flywheel-line {
-            opacity: 1;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-inter">
@@ -236,56 +172,6 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Two-Sided Trust Flywheel</h3>
                     <p class="text-gray-600">Every vetted Smart Brief attracts top agencies. Accountable agencies deliver better outcomes. Better outcomes build client trust, which drives more briefs and more vetted leads, reinforcing the loop.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust Flywheel Section -->
-    <section class="bg-gray-950 py-24 text-white text-center">
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
-                Two-Sided Trust Flywheel
-                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
-            </h2>
-            <div class="grid md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-                <!-- Client Side Nodes (Left) -->
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">Smart Briefs</h3>
-                        <p class="text-sm text-gray-400">Attract Top Agencies</p>
-                    </div>
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">More Briefs</h3>
-                        <p class="text-sm text-gray-400">Drive Volume Growth</p>
-                    </div>
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">Better Outcomes</h3>
-                        <p class="text-sm text-gray-400">Build Client Trust</p>
-                    </div>
-                </div>
-                
-                <!-- Central Core -->
-                <div class="flex items-center justify-center py-8">
-                    <div class="w-56 h-56 rounded-full bg-gradient-to-br from-keystone-green to-keystone-purple flex items-center justify-center text-white text-xl font-bold text-center z-10 shadow-xl shadow-keystone-green/30">
-                        Trust as a<br>Platform
-                    </div>
-                </div>
-
-                <!-- Agent Side Nodes (Right) -->
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">Accountable Agencies</h3>
-                        <p class="text-sm text-gray-400">Deliver Quality</p>
-                    </div>
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">Attribution Ledger</h3>
-                        <p class="text-sm text-gray-400">Resolves Disputes</p>
-                    </div>
-                    <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white p-6 rounded-2xl text-center max-w-xs w-full">
-                        <h3 class="font-bold text-lg">Services Integration</h3>
-                        <p class="text-sm text-gray-400">Streamlines Transactions</p>
-                    </div>
                 </div>
             </div>
         </div>
