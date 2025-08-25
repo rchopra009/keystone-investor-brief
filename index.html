@@ -4,785 +4,630 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keystone - AI-Native Commercial Real Estate Platform</title>
+    <!-- Use Tailwind CSS for a modern, utility-first approach -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use a custom font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom styles for animations and specific elements not handled by Tailwind */
+        :root {
+            --keystone-green: #10b981;
+            --keystone-purple: #6366f1;
+            --keystone-dark-blue: #0f172a;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #111827;
-            background: #ffffff;
+            background: #f8fafc;
             overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-        
-        .kinetic-blume {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #10b981;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .logo {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%);
+
+        .kinetic-text {
+            background: linear-gradient(135deg, var(--keystone-green) 0%, var(--keystone-purple) 50%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
         }
-        
-        .tagline {
-            font-size: 1.875rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-        
-        .subtitle {
-            font-size: 1.125rem;
-            opacity: 0.8;
-            font-weight: 400;
-            margin-bottom: 3rem;
-        }
-        
-        .market-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .market-size {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #10b981;
-        }
-        
-        .market-label {
-            font-size: 0.875rem;
-            color: #d1d5db;
-        }
-        
-        /* Opening Statement Section */
-        .opening {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-        
-        .opening-content {
+
+        /* Static Flywheel Diagram */
+        .flywheel-diagram {
+            position: relative;
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .section-label {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #6366f1;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-        
-        .opening-text {
-            font-size: 1.5rem;
-            font-weight: 500;
-            line-height: 1.7;
-            color: #374151;
-        }
-        
-        .highlight {
-            color: #6366f1;
-            font-weight: 700;
-        }
-        
-        /* Problem Section */
-        .section {
-            padding: 6rem 0;
-        }
-        
-        .section-dark {
-            background: #0f172a;
-            color: white;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #10b981, #6366f1);
-            border-radius: 2px;
-        }
-        
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .problem-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            text-align: left;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .problem-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .problem-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .problem-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .problem-desc {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        /* Trust Flywheel Section */
-        .flywheel-section {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .flywheel-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
-        }
-        
-        .flywheel-container {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-        }
-        
-        .flywheel {
-            position: relative;
-            width: 600px;
             height: 600px;
+            margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
-        
+
         .flywheel-core {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #10b981 0%, #6366f1 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 700;
-            text-align: center;
-            z-index: 10;
             position: relative;
-            box-shadow: 0 0 60px rgba(16, 185, 129, 0.3);
-        }
-        
-        .orbit {
-            position: absolute;
-            border: 2px solid rgba(16, 185, 129, 0.2);
-            border-radius: 50%;
-            animation: rotate 30s linear infinite;
-        }
-        
-        .orbit-1 { width: 350px; height: 350px; }
-        .orbit-2 { width: 500px; height: 500px; animation-duration: 40s; animation-direction: reverse; }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            z-index: 10;
         }
         
         .flywheel-node {
             position: absolute;
-            width: 140px;
-            height: 80px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #1f2937;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 5;
+            padding: 1rem;
+            border-radius: 12px;
             text-align: center;
-            padding: 0 1rem;
             line-height: 1.3;
-            animation: counter-rotate 30s linear infinite;
-            border: 2px solid #10b981;
-        }
-        
-        @keyframes counter-rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-        
-        .node-orbit-1 { animation-duration: 30s; }
-        .node-orbit-2 { animation-duration: 40s; animation-direction: reverse; }
-        
-        .node-1 { top: -40px; left: 50%; transform: translateX(-50%); }
-        .node-2 { top: 50%; right: -70px; transform: translateY(-50%); }
-        .node-3 { bottom: -40px; left: 50%; transform: translateX(-50%); }
-        .node-4 { top: 50%; left: -70px; transform: translateY(-50%); }
-        
-        .node-5 { top: 60px; right: 60px; }
-        .node-6 { bottom: 60px; right: 60px; }
-        .node-7 { bottom: 60px; left: 60px; }
-        .node-8 { top: 60px; left: 60px; }
-        
-        /* Solution Section */
-        .solution-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-        
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-        
-        .solution-card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid #e5e7eb;
             transition: all 0.3s ease;
+            cursor: pointer;
+            width: 180px;
         }
-        
-        .solution-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-        
-        .solution-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #10b981, #6366f1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .solution-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-        
-        .solution-desc {
-            color: #6b7280;
-            line-height: 1.7;
-        }
-        
-        /* How It Works Section */
-        .workflow {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .workflow-step {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: left;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .workflow-step:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        
-        .step-number {
+
+        /* Dotted lines as SVG */
+        .flywheel-svg {
             position: absolute;
-            top: -15px;
-            left: 2rem;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #10b981, #6366f1);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* How It Works Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #e5e7eb;
+        }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: -2.25rem;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--keystone-green), var(--keystone-purple));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.875rem;
-        }
-        
-        .step-title {
             font-size: 1.25rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: white;
+            z-index: 10;
         }
-        
-        .step-description {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-        }
-        
-        /* Proof Loop Section */
-        .proof-section {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-        }
-        
-        .proof-highlight {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-            border: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
-        }
-        
-        .proof-timeline {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        
-        .proof-scope {
-            font-size: 1.25rem;
-            opacity: 0.9;
-        }
-        
-        .proof-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .metric-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .metric-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.15);
-        }
-        
-        .metric-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            color: #fbbf24;
-        }
-        
-        .metric-label {
-            font-size: 0.875rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        /* Footer */
-        .footer {
-            background: #0a0a0a;
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
-        }
-        
-        .closing-statement {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.8;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .flywheel {
-                width: 400px;
-                height: 400px;
-            }
-            
-            .orbit-1 { width: 250px; height: 250px; }
-            .orbit-2 { width: 350px; height: 350px; }
-            
-            .flywheel-node {
-                width: 100px;
-                height: 60px;
-                font-size: 0.65rem;
-                padding: 0 0.5rem;
-            }
-            
-            .node-2 { right: -50px; }
-            .node-4 { left: -50px; }
-            
-            .node-5, .node-6, .node-7, .node-8 {
-                width: 80px;
-                height: 50px;
-                font-size: 0.6rem;
-            }
-            
-            .logo { font-size: 3rem; }
-            .section-title { font-size: 2rem; }
-            .closing-statement { font-size: 2rem; }
-        }
-        
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900 font-inter">
+
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <div class="kinetic-blume">KINETIC BLUME</div>
-                <h1 class="logo">Keystone</h1>
-                <p class="tagline">AI-Native Commercial Real Estate Platform for India</p>
-                <p class="subtitle">Building the trust rails for India's commercial real estate market</p>
-                <div class="market-highlight">
-                    <div class="market-size">$200B+</div>
-                    <div class="market-label">Market<br>Opportunity</div>
+    <section class="bg-gray-950 text-white min-h-screen flex items-center relative py-12 md:py-0 rounded-b-[4rem]">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <div class="text-sm uppercase tracking-widest font-semibold text-keystone-green mb-2 md:mb-4">
+                    The Investor Brief
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-4 md:mb-6">
+                    <span class="kinetic-text">Keystone</span>
+                </h1>
+                <p class="text-3xl md:text-4xl font-semibold text-white/95 mb-4">
+                    AI-Native Commercial Real Estate Platform for India
+                </p>
+                <p class="text-lg md:text-xl text-white/80 font-normal mb-8">
+                    Building the trust rails for India's commercial real estate market
+                </p>
+                <div class="inline-flex items-center gap-4 bg-keystone-green/10 border border-keystone-green/30 p-4 rounded-xl backdrop-blur-sm">
+                    <div class="text-3xl md:text-4xl font-black text-keystone-green">
+                        $200B+
+                    </div>
+                    <div class="text-sm text-gray-300 uppercase leading-snug">
+                        Market<br>Opportunity
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Opening Statement -->
-    <section class="opening">
-        <div class="container">
-            <div class="opening-content fade-in">
-                <div class="section-label">Opening Statement</div>
-                <p class="opening-text">
-                    India's <span class="highlight">$200B commercial real estate market</span> is at an inflection point. 
-                    RERA regulation mandates verified projects, while AI is redefining how transactions are initiated and managed. 
-                    The winner will be the platform that turns <span class="highlight">compliance and AI into trust rails</span>. 
-                    Keystone is that platform — <span class="highlight">the system of record for Indian CRE</span>.
-                </p>
+    <!-- Opening Statement Section -->
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <div class="text-sm uppercase tracking-widest text-keystone-purple font-semibold mb-6">
+                Opening Statement
             </div>
+            <p class="text-2xl md:text-3xl font-medium leading-relaxed text-gray-700 mb-6">
+                Kinetic Blume is an AI venture lab. Keystone is our first bold bet: building the trust rails for India’s $200B+ CRE market.
+            </p>
+            <p class="text-2xl md:text-3xl font-medium leading-relaxed text-gray-700">
+                India's <span class="text-keystone-purple font-bold">$200B commercial real estate market</span> is at an inflection point. RERA regulation mandates verified projects, while AI is redefining how transactions are initiated and managed. The winner will be the platform that turns <span class="text-keystone-purple font-bold">compliance and AI into trust rails</span>. Keystone is that platform — <span class="text-keystone-purple font-bold">the system of record for Indian CRE</span>.
+            </p>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">The Problem</h2>
-            <div class="problem-grid">
-                <div class="problem-card fade-in stagger-1">
-                    <div class="problem-icon">🌐</div>
-                    <h3 class="problem-title">Fragmented Market</h3>
-                    <p class="problem-desc">India's CRE market is fragmented, opaque, and inefficient</p>
+    <section class="bg-gray-950 text-white py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                The Problem
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h3 class="text-xl font-bold mb-2">Fragmented Market</h3>
+                    <p class="text-gray-400">India’s CRE market is fragmented, opaque, and inefficient.</p>
                 </div>
-                <div class="problem-card fade-in stagger-2">
-                    <div class="problem-icon">📧</div>
-                    <h3 class="problem-title">Data Chaos</h3>
-                    <p class="problem-desc">Clients drown in broker spam and unreliable data</p>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <div class="text-4xl mb-4">📧</div>
+                    <h3 class="text-xl font-bold mb-2">Data Chaos</h3>
+                    <p class="text-gray-400">Clients drown in broker spam and unreliable data.</p>
                 </div>
-                <div class="problem-card fade-in stagger-3">
-                    <div class="problem-icon">⚡</div>
-                    <h3 class="problem-title">Attribution Wars</h3>
-                    <p class="problem-desc">Agencies waste time in attribution disputes and off-platform leakage</p>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Attribution Wars</h3>
+                    <p class="text-gray-400">Agencies waste time in attribution disputes and off-platform leakage.</p>
                 </div>
-                <div class="problem-card fade-in stagger-4">
-                    <div class="problem-icon">💸</div>
-                    <h3 class="problem-title">Failed Deals</h3>
-                    <p class="problem-desc">The result: wasted cycles, mistrust, and deals that don't close</p>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <div class="text-4xl mb-4">💸</div>
+                    <h3 class="text-xl font-bold mb-2">Failed Deals</h3>
+                    <p class="text-gray-400">The result: wasted cycles, mistrust, and deals that don’t close.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solution Section -->
-    <section class="section solution-section">
-        <div class="container">
-            <h2 class="section-title">Our Solution</h2>
-            <div class="solution-grid">
-                <div class="solution-card fade-in stagger-1">
-                    <div class="solution-icon">🏢</div>
-                    <h3 class="solution-title">Supply-Side: Curated Agencies</h3>
-                    <p class="solution-desc">Only the best pass RERA/KYC/reputation filters. Every agency is accountable, attributable, and performance-scored.</p>
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Our Solution
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <p class="text-center text-lg md:text-xl font-medium mb-12">
+                Our moat is the quality of agencies we let in and the quality of client experience we deliver.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="group bg-white rounded-3xl p-10 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-keystone-green to-keystone-purple rounded-2xl flex items-center justify-center text-white text-3xl mb-6 transition-all group-hover:rotate-12">
+                        🏢
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Supply-Side: Curated Agencies</h3>
+                    <p class="text-gray-600">curated, accountable, attributable. Only the best pass RERA/KYC/reputation filters; performance logged and scored.</p>
                 </div>
-                <div class="solution-card fade-in stagger-2">
-                    <div class="solution-icon">👤</div>
-                    <h3 class="solution-title">Demand-Side: Private Clients</h3>
-                    <p class="solution-desc">RERA-verified, clean data with faster and better options. No spam, no leakage, higher-quality matches with integrated services.</p>
+                <div class="group bg-white rounded-3xl p-10 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-keystone-green to-keystone-purple rounded-2xl flex items-center justify-center text-white text-3xl mb-6 transition-all group-hover:rotate-12">
+                        👤
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Demand-Side: Private Clients</h3>
+                    <p class="text-gray-600">RERA-verified, clean data with faster and better options. Keystone eliminates spam/leakage, ensures higher-quality matches, and integrates last-mile services (legal, valuation, design, financing).</p>
                 </div>
-                <div class="solution-card fade-in stagger-3">
-                    <div class="solution-icon">🔄</div>
-                    <h3 class="solution-title">Trust Flywheel</h3>
-                    <p class="solution-desc">Every vetted Smart Brief attracts top agencies. Accountable agencies deliver better outcomes, building client trust and driving more briefs.</p>
+                <div class="group bg-white rounded-3xl p-10 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-keystone-green to-keystone-purple rounded-2xl flex items-center justify-center text-white text-3xl mb-6 transition-all group-hover:rotate-12">
+                        🔄
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Two-Sided Trust Flywheel</h3>
+                    <p class="text-gray-600">Every vetted Smart Brief attracts top agencies. Accountable agencies deliver better outcomes. Better outcomes build client trust, which drives more briefs and more vetted leads, reinforcing the loop.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Trust Flywheel Section -->
-    <section class="section flywheel-section">
-        <div class="flywheel-bg"></div>
-        <div class="container">
-            <h2 class="section-title">Two-Sided Trust Flywheel</h2>
-            <div class="flywheel-container">
-                <div class="flywheel">
-                    <div class="orbit orbit-1">
-                        <div class="flywheel-node node-1 node-orbit-1">
-                            <strong>Smart Briefs</strong><br>
-                            Attract Top Agencies
-                        </div>
-                        <div class="flywheel-node node-2 node-orbit-1">
-                            <strong>Better Outcomes</strong><br>
-                            Build Client Trust
-                        </div>
-                        <div class="flywheel-node node-3 node-orbit-1">
-                            <strong>More Briefs</strong><br>
-                            Drive Volume Growth
-                        </div>
-                        <div class="flywheel-node node-4 node-orbit-1">
-                            <strong>Accountable Agencies</strong><br>
-                            Deliver Quality
-                        </div>
-                    </div>
-                    
-                    <div class="orbit orbit-2">
-                        <div class="flywheel-node node-5 node-orbit-2">
-                            RERA Verified<br>
-                            Projects
-                        </div>
-                        <div class="flywheel-node node-6 node-orbit-2">
-                            SLA-Bound<br>
-                            Responses
-                        </div>
-                        <div class="flywheel-node node-7 node-orbit-2">
-                            Attribution<br>
-                            Ledger
-                        </div>
-                        <div class="flywheel-node node-8 node-orbit-2">
-                            Services<br>
-                            Integration
-                        </div>
-                    </div>
-                    
-                    <div class="flywheel-core">
-                        Trust as a<br>Platform
-                    </div>
+    <section class="bg-gray-950 py-24 text-white text-center">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Two-Sided Trust Flywheel
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <div class="flywheel-diagram">
+                <!-- SVG for dashed lines -->
+                <svg class="flywheel-svg" viewBox="0 0 900 600">
+                    <path d="M 200 100 A 300 300 0 0 1 700 100" stroke="#fff" stroke-width="2" stroke-dasharray="8 8" fill="none" opacity="0.15"/>
+                    <path d="M 700 100 A 300 300 0 0 1 700 500" stroke="#fff" stroke-width="2" stroke-dasharray="8 8" fill="none" opacity="0.15"/>
+                    <path d="M 700 500 A 300 300 0 0 1 200 500" stroke="#fff" stroke-width="2" stroke-dasharray="8 8" fill="none" opacity="0.15"/>
+                    <path d="M 200 500 A 300 300 0 0 1 200 100" stroke="#fff" stroke-width="2" stroke-dasharray="8 8" fill="none" opacity="0.15"/>
+                </svg>
+
+                <!-- Center Core -->
+                <div class="flywheel-core w-56 h-56 rounded-full bg-gradient-to-br from-keystone-green to-keystone-purple flex items-center justify-center text-white text-xl font-bold text-center shadow-xl shadow-keystone-green/30">
+                    Trust as a<br>Platform
+                </div>
+                
+                <!-- Nodes -->
+                <div class="flywheel-node top-[100px] left-[-90px] bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white hover:bg-gray-800/80">
+                    <h3 class="text-lg font-bold">Accountable Agencies</h3>
+                    <p class="text-sm text-gray-400">Deliver Quality</p>
+                </div>
+                <div class="flywheel-node top-[100px] right-[-90px] bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white hover:bg-gray-800/80">
+                    <h3 class="text-lg font-bold">Better Outcomes</h3>
+                    <p class="text-sm text-gray-400">Build Client Trust</p>
+                </div>
+                <div class="flywheel-node top-[400px] left-[-90px] bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white hover:bg-gray-800/80">
+                    <h3 class="text-lg font-bold">Smart Briefs</h3>
+                    <p class="text-sm text-gray-400">Attract Top Agencies</p>
+                </div>
+                <div class="flywheel-node top-[400px] right-[-90px] bg-gray-800/50 backdrop-blur-lg border border-gray-700 text-white hover:bg-gray-800/80">
+                    <h3 class="text-lg font-bold">More Briefs</h3>
+                    <p class="text-sm text-gray-400">Drive Volume Growth</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Trust Rails System</h2>
-            <div class="workflow">
-                <div class="workflow-step fade-in stagger-1">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Smart Brief</h3>
-                    <p class="step-description">AI converts natural language into structured requirements; identity masked & tokenized</p>
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                How It Works
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <h3 class="text-center text-3xl font-bold mb-12">Investor View — Trust Rails System</h3>
+
+            <!-- Vertical Timeline Flow -->
+            <div class="flex flex-col items-center">
+                <div class="relative timeline-container max-w-2xl w-full">
+                    <div class="timeline-step">
+                        <div class="timeline-number">1</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">Smart Brief</h4>
+                            <p class="text-gray-600 text-base">AI converts natural language into structured requirements; identity masked & tokenized.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-number">2</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">RERA-Verified Search</h4>
+                            <p class="text-gray-600 text-base">Only government-approved projects surface, with certificates & compliance signals.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-number">3</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">SLA Agency Console</h4>
+                            <p class="text-gray-600 text-base">Agents receive briefs in SLA inbox (≤10 min ack, ≤4 hr follow-up).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-number">4</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">Qualified Responses</h4>
+                            <p class="text-gray-600 text-base">Clients get side-by-side, attributable proposals without spam.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-number">5</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">Services on Rails</h4>
+                            <p class="text-gray-600 text-base">Legal, valuation, design, and financing triggered automatically at deal stages.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-number">6</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 ml-12">
+                            <h4 class="font-bold text-xl mb-1">Closed-Won Ledger</h4>
+                            <p class="text-gray-600 text-base">Every payout logged; full audit trail; disputes resolved fast.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="workflow-step fade-in stagger-2">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">RERA-Verified Search</h3>
-                    <p class="step-description">Only government-approved projects surface, with certificates & compliance signals</p>
+            </div>
+            
+            <!-- Client vs. Agent Journeys Visual -->
+            <h3 class="text-center text-3xl font-bold mt-16 mb-6">Client vs. Agent Journeys</h3>
+            <div class="flex flex-col md:flex-row justify-center gap-12 md:gap-24 items-start">
+                <!-- Client Journey Column -->
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center space-x-2 mb-8">
+                        <span class="text-3xl">👤</span>
+                        <h4 class="text-2xl font-bold">Client</h4>
+                    </div>
+                    <div class="relative flex flex-col items-start w-full">
+                        <div class="journey-step">
+                            <span class="journey-icon">📝</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Smart Brief</p>
+                                <p class="text-sm text-gray-500">→ verified projects</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">🤝</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Choose Agents</p>
+                                <p class="text-sm text-gray-500">→ SLA-bound responses</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">📍</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Site Visits</p>
+                                <p class="text-sm text-gray-500">→ close with transparency</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">✅</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Close</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="workflow-step fade-in stagger-3">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">SLA Agency Console</h3>
-                    <p class="step-description">Agents receive briefs in SLA inbox (≤10 min ack, ≤4 hr follow-up)</p>
+
+                <!-- Agent Journey Column -->
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center space-x-2 mb-8">
+                        <span class="text-3xl">🏢</span>
+                        <h4 class="text-2xl font-bold">Agent</h4>
+                    </div>
+                    <div class="relative flex flex-col items-start w-full">
+                        <div class="journey-step">
+                            <span class="journey-icon">✍️</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Onboarding</p>
+                                <p class="text-sm text-gray-500">(≤40% pass)</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">📦</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">SLA Inbox</p>
+                                <p class="text-sm text-gray-500">→ stake/respond</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">📊</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Score Updates</p>
+                                <p class="text-sm text-gray-500">→ ledger-logged payouts</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <span class="journey-icon">💰</span>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                                <p class="font-bold text-gray-800">Payouts</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="workflow-step fade-in stagger-4">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Qualified Responses</h3>
-                    <p class="step-description">Clients get side-by-side, attributable proposals without spam</p>
+            </div>
+            <!-- Win-Win Paragraph -->
+            <p class="text-lg text-center text-gray-700 mt-16 max-w-4xl mx-auto leading-relaxed">
+                Clients win with privacy (no spam, no leakage), clean RERA-verified data, and faster, better options. Agents win with attribution, faster deals, and a growing pipeline of vetted leads. Together, every client brief attracts better agencies, and every accountable agency delivers better client outcomes — creating a compounding two-sided trust flywheel.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why We Win Section -->
+    <section class="bg-gray-950 text-white py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Why We Win
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Inevitability</h3>
+                    <p class="text-gray-400">RERA + AI are reshaping CRE. In 10 years, no deal will close without verified data and attribution. Keystone is positioned as the system of record for this shift.</p>
                 </div>
-                <div class="workflow-step fade-in stagger-1">
-                    <div class="step-number">5</div>
-                    <h3 class="step-title">Services on Rails</h3>
-                    <p class="step-description">Legal, valuation, design, and financing triggered automatically at deal stages</p>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Compounding Flywheel</h3>
+                    <p class="text-gray-400">More briefs → better agencies → better outcomes → more briefs. The classic marketplace loop, reinforced by attribution and services.</p>
                 </div>
-                <div class="workflow-step fade-in stagger-2">
-                    <div class="step-number">6</div>
-                    <h3 class="step-title">Closed-Won Ledger</h3>
-                    <p class="step-description">Every payout logged; full audit trail; disputes resolved fast</p>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Data & Reputation Moat</h3>
+                    <p class="text-gray-400">Immutable audit logs, attribution records, SLA metrics, and reputation scoring across both sides.</p>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Services as Margin Expansion</h3>
+                    <p class="text-gray-400">Legal, valuation, design, and loans drive stickiness, expand ARPU, and lock transactions inside Keystone.</p>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 col-span-1 lg:col-span-2 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">AI-Native</h3>
+                    <p class="text-gray-400">Every workflow — search, briefs, scoring, attribution — is AI-powered from day one.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proof Loop Section -->
-    <section class="section proof-section">
-        <div class="container">
-            <h2 class="section-title">MVP Proof Loop</h2>
-            <div class="proof-highlight">
-                <div class="proof-timeline">Next 8 Weeks</div>
-                <div class="proof-scope">Delhi NCR • HSN + 5-10 curated agencies</div>
+    <!-- Market Segments Section -->
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Market Segments
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <p class="text-center text-lg md:text-xl font-medium mb-12 text-gray-700">
+                Keystone is built and serves the full CRE universe across India in stages:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Commercial</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Grade A/B/C offices, co-working/flexible workspaces, IT parks, SEZs, strata-sold commercial buildings.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Residential</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Apartments (1–4 BHK), builder floors, villas, independent houses, studio apartments, plots/land, affordable housing, luxury housing, gated communities, PG/hostel/co-living/student housing.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Retail</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>High street retail, malls, showrooms.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Industrial / Logistics</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Warehouses (cold/dry/bonded), logistics parks, manufacturing units, industrial sheds, factory spaces.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Mixed-Use</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Integrated townships, retail + residential towers, commercial + residential developments.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Land</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Agricultural, commercial, residential, institutional, and industrial land.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Hospitality</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Hotels, guest houses, resorts, banquet halls, event venues.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <h3 class="text-2xl font-bold mb-2 text-keystone-purple">Special Purpose / Institutional</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Schools, hospitals, religious buildings, government buildings, PSU real estate.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="proof-metrics">
-                <div class="metric-card fade-in stagger-1">
-                    <div class="metric-number">≥20</div>
-                    <div class="metric-label">Real Smart Briefs<br>End-to-End</div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section class="bg-gray-950 text-white py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Business Model
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">SaaS “Pro” Fee</h3>
+                    <p class="text-gray-400">SLA console & routing.</p>
                 </div>
-                <div class="metric-card fade-in stagger-2">
-                    <div class="metric-number">&lt;60min</div>
-                    <div class="metric-label">Median Time to First<br>Qualified Response</div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Per-Order Fees</h3>
+                    <p class="text-gray-400">Legal & valuation packs.</p>
                 </div>
-                <div class="metric-card fade-in stagger-3">
-                    <div class="metric-number">≥30%</div>
-                    <div class="metric-label">Faster Brief → Site Visit<br>vs HSN Baseline</div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">% of Project Award</h3>
+                    <p class="text-gray-400">For design/fit-out RFPs.</p>
                 </div>
-                <div class="metric-card fade-in stagger-4">
-                    <div class="metric-number">100%</div>
-                    <div class="metric-label">RERA-Verified<br>Projects Surfaced</div>
-                </div>
-                <div class="metric-card fade-in stagger-1">
-                    <div class="metric-number">≤40%</div>
-                    <div class="metric-label">Agency<br>Approval Rate</div>
-                </div>
-                <div class="metric-card fade-in stagger-2">
-                    <div class="metric-number">≥3×</div>
-                    <div class="metric-label">Lead-to-Close vs<br>Market Baseline</div>
-                </div>
-                <div class="metric-card fade-in stagger-3">
-                    <div class="metric-number">≥90%</div>
-                    <div class="metric-label">SLA<br>Adherence</div>
-                </div>
-                <div class="metric-card fade-in stagger-4">
-                    <div class="metric-number">NPS ≥8</div>
-                    <div class="metric-label">Client Net<br>Promoter Score</div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 transition-all hover:scale-105 hover:border-keystone-green/50 hover:shadow-lg hover:shadow-keystone-green/10">
+                    <h3 class="text-xl font-bold mb-2">Target</h3>
+                    <p class="text-gray-400">≥35% of closed deals attach services.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- MVP Proof Loop Section -->
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                MVP Proof Loop
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <p class="text-center text-lg md:text-xl font-medium mb-4 text-gray-700">
+                <span class="font-bold">What we must prove:</span>
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="text-6xl font-black mb-2 text-keystone-purple transition-all group-hover:scale-110">≥20</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-600">Real Smart Briefs</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-500 mt-1">End-to-End</div>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="text-6xl font-black mb-2 text-keystone-purple transition-all group-hover:scale-110">&lt;60min</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-600">Median Time to First</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-500 mt-1">Qualified Response</div>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="text-6xl font-black mb-2 text-keystone-purple transition-all group-hover:scale-110">≥30%</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-600">Faster from Brief</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-500 mt-1">→ Site Visit vs. HSN Realty baseline</div>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-xl hover:shadow-gray-300">
+                    <div class="text-6xl font-black mb-2 text-keystone-purple transition-all group-hover:scale-110">100%</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-600">RERA-Verified Projects</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-500 mt-1">Surfaced</div>
+                </div>
+            </div>
+            <p class="text-center text-lg md:text-xl font-medium mt-12 mb-4 text-gray-700">
+                <span class="font-bold">Scope:</span> Delhi NCR • <span class="font-bold">Actors:</span> HSN + 5–10 curated agencies.
+            </p>
+        </div>
+    </section>
+
+    <!-- Key Metrics Section -->
+    <section class="bg-gray-950 text-white py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Key Metrics / Early Targets
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:bg-gray-800/80">
+                    <div class="text-6xl font-black mb-2 text-yellow-300 transition-all group-hover:scale-110">≤40%</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-400">Approval Rate</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-400 mt-1">Agency</div>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:bg-gray-800/80">
+                    <div class="text-6xl font-black mb-2 text-yellow-300 transition-all group-hover:scale-110">≥3×</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-400">Lead-to-Close</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-400 mt-1">vs Market Baseline</div>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:bg-gray-800/80">
+                    <div class="text-6xl font-black mb-2 text-yellow-300 transition-all group-hover:scale-110">≥90%</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-400">SLA Adherence</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-400 mt-1">Accountability</div>
+                </div>
+                <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:bg-gray-800/80">
+                    <div class="text-6xl font-black mb-2 text-yellow-300 transition-all group-hover:scale-110">NPS ≥8</div>
+                    <div class="text-sm uppercase tracking-wider text-gray-400">Client Net Promoter Score</div>
+                    <div class="text-sm opacity-90 leading-snug text-gray-400 mt-1">Trust and Satisfaction</div>
+                </div>
+            </div>
+            <div class="group bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-2xl p-8 text-center transition-all hover:scale-105 hover:bg-gray-800/80 col-span-1 sm:col-span-2 lg:col-span-4 max-w-sm mx-auto mt-8">
+                <div class="text-6xl font-black mb-2 text-yellow-300 transition-all group-hover:scale-110">≥12 hours</div>
+                <div class="text-sm uppercase tracking-wider text-gray-400">Saved per transaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operating Philosophy Section -->
+    <section class="bg-gray-100 py-24">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 relative">
+                Operating Philosophy
+                <div class="w-20 h-1 bg-gradient-to-r from-keystone-green to-keystone-purple rounded-full absolute bottom-[-1rem] left-1/2 -translate-x-1/2"></div>
+            </h2>
+            <p class="text-xl md:text-2xl font-medium leading-relaxed text-gray-700">
+                Bootstrapped under Kinetic Blume. Focused on traction and proof before scaling capital.
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <h3 class="closing-statement">Keystone = Trust as a Platform</h3>
-            <p class="footer-subtitle">
-                The system of record for Indian CRE: clients win with privacy, clean data, and faster options; 
-                agencies win with attribution, faster deals, and vetted lead volume. Together, this creates a 
+    <footer class="bg-gray-950 text-white py-24 text-center rounded-t-[4rem]">
+        <div class="container mx-auto px-6">
+            <h3 class="kinetic-text text-4xl md:text-5xl font-extrabold mb-6">
+                Keystone = Trust as a Platform
+            </h3>
+            <p class="text-lg opacity-80 max-w-4xl mx-auto leading-relaxed">
+                The system of record for Indian CRE: clients win with privacy, clean data, and faster options;
+                agencies win with attribution, faster deals, and vetted lead volume. Together, this creates a
                 two-sided trust flywheel that compounds value for both sides.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
